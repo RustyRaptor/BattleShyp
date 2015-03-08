@@ -11,8 +11,12 @@ representing points on the grid. You keep picking until your turns run out or yo
 the battleship. 
 
 TODO:
-1. add support for multiple ships. 
+1. add support for multiple ships.
+ 
 2. add support for local multiplayer. 
+
 3. Add gui or converting to javascript to make it web based to use graphics. 
+
 4. Improve difficulty system.
+
 5. Destroy lots of ships. 
