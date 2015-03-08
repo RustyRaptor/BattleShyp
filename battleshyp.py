@@ -8,9 +8,21 @@ board = []
 # you change the rest to fit.
 # I plan to make this set by difficulty 
 # that can be selected in-game
-for x in range(5):
-    board.append(["O"] * 5)
-
+difficulty = input("Set difficulty. Must be 1, 2, or 3:")
+if difficulty < 1 or difficulty > 3:
+	difficulty = input("that number is too big or too small please enter a number 1, 2, or 3")
+elif difficulty == 1 :
+	for x in range(3):
+    		board.append(["O"] * 3)
+	a = 3
+elif difficulty == 2:
+	for x in range(5):
+		board.append(["0"] * 5)
+	a = 5
+elif difficulty == 3:
+	for x in range(7):
+		board.append(["0"] * 7)
+	a = 7
 def print_board(board):
     for row in board:
         print " ".join(row)
@@ -28,22 +40,25 @@ ship_row = random_row(board)
 ship_col = random_col(board)
 
 
-for turn in range(4):
+for turn in range(9):
     guess_row = int(raw_input("Guess Row:"))
     guess_col = int(raw_input("Guess Collumn:"))
     if guess_row == ship_row and guess_col == ship_col:
         print "Target Neutralized"
+        board[guess_row][guess_col] = "+"
         break
+
     else:
-        if (guess_row < 0 or guess_row > 4) or (guess_col < 0 or guess_col > 4):
+        if (guess_row < 0 or guess_row > a) or (guess_col < 0 or guess_col > a):
             print "Coordinates undefined"
         elif(board[guess_row][guess_col] == "X"):
-                    print "coordinates already struck"
+			print "coordinates already struck"
+			print_board(board)
         else:
             print "Target Missed"
             board[guess_row][guess_col] = "X"
         print "Turn", turn + 1
-if turn == 3:
+if turn == 8:
 	print "Defeat"
 	print "the target location was", str(ship_row), " , ", str(ship_col)
 print_board(board)

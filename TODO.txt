@@ -1,0 +1,6 @@
+TODO
+
+1. Add support for multiple ships
+2. Add multiplayer support
+3. Make javascript version
+4. Add graphical interface
