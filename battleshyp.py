@@ -3,27 +3,36 @@ from random import randint
 board = []
 
 # prompt player to set difficulty
-difficulty = input('Set difficulty. Must be 1, 2, or 3:')
+difficulty = raw_input('Set difficulty. Must be 1, 2, or 3:')
 
-# check to make sure difficulty is in the valid range
-if difficulty < 1 or difficulty > 3:
-    difficulty = input('that number is too big or too small please enter a number 1, 2, or 3')
 
-# check if the entered difficulty is a number and not a string/bool
-if isinstance(difficulty, int) == False:
-    difficulty = input('that is not a number please use one of the numbers 1, 2, or 3 as your difficulty:')
+# check if the input was a number
+def checkifdigit(dif):
+    while (dif.isdigit() == False):
+        dif = raw_input('That\'s not a number. Please enter a number 1, 2, or 3:')
+    return dif
 
-# here it appends the grid in the form of '0' strings to the array "board" depending on the difficulty.
-# I am working on a better way to do this as this is a bit messy and not very modular
-elif difficulty == 1:
+
+# check if the input number was in the correct range
+def checkrange(dif):
+    while int(dif) > 3 or int(dif) < 0:
+        dif = raw_input('That number is too high or too low please pick a number 1, 2, or 3:')
+    return dif
+
+
+difficulty = checkifdigit(difficulty)
+difficulty = checkrange(difficulty)
+
+# here is where the settings for each difficulty is set.
+if difficulty == '1':
     for x in range(3):
         board.append(['O'] * 3)
     a = 3
-elif difficulty == 2:
+elif difficulty == '2':
     for x in range(5):
         board.append(['0'] * 5)
     a = 5
-elif difficulty == 3:
+elif difficulty == '3':
     for x in range(7):
         board.append(['0'] * 7)
     a = 7
