@@ -8,7 +8,7 @@ difficulty = raw_input('Set difficulty. Must be 1, 2, or 3:')
 
 # check if the input was a number
 def checkifdigit(dif):
-    while (dif.isdigit() == False):
+    while not dif.isdigit():
         dif = raw_input('That\'s not a number. Please enter a number 1, 2, or 3:')
     return dif
 
@@ -76,7 +76,7 @@ for turn in range(9):
         if (guess_row < 0 or guess_row >= a) or (guess_col < 0 or guess_col >= a):
             print 'Coordinates undefined'
         # if the player picks a location that's already been picked
-        elif (board[guess_row][guess_col] == 'X'):
+        elif board[guess_row][guess_col] == 'X':
             print 'coordinates already struck'
             print_board(board)
         # if the player misses the ship
